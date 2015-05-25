@@ -3,11 +3,41 @@
     <head>
         <meta charset="utf-8">
         <title>D3 Test</title>
-        <script type="text/javascript" src="d3/d3.v3.js"></script>
+<!--         <link rel="stylesheet" type="text/css" href="style.css"> -->
+        <script type="text/javascript" src="d3.v3.js"></script>   
+        <style type="text/css">
+        	div.bar {
+    			display: inline-block;
+    			width: 20px;
+    			height: 75px;   /* We'll override this later */
+    			margin-right: 2px;
+    			background-color: teal;
+			};
+		</style>     
     </head>
     <body>
         <script type="text/javascript">
-            // Your beautiful D3 code will go here
+		// 	var dataset = [];
+		// 	for (var i = 0; i < 25; i++) {
+		// 		var newNumber = Math.random() * 30;
+		// 		dataset.push(newNumber)
+		// 	};
+		// d3.select("body").selectAll("div")
+		// 	.data(dataset)
+		// 	.enter()
+		// 	.append("div")
+		// 	.attr("class", "bar")
+		// 	.style("height", function(d) {
+		// 		var barHeight = d * 5;  //Scale up by factor of 5
+		// 		return barHeight + "px";
+		// 	});
         </script>
+        <svg width="500" height="500">
+		    <circle cx="150" cy="250" r="100" fill="rgba(0, 0, 255, 0.75)"/>
+		    <circle cx="275" cy="250" r="100" fill="rgba(128, 0, 128, 0.75)"/>
+			<circle cx="400" cy="250" r="100" fill="rgba(0, 255, 0, 0.5)"/>
+		</svg>
     </body>
 </html> 
+
+<!-- http://alignedleft.com/tutorials/d3/an-svg-primer -->

@@ -34,36 +34,62 @@
             .attr("width", w)
             .attr("height", h);
 
-    	svg.selectAll("rect")
+    	svg.selectAll("g")
 		   	.data(statesData.features)
 		   	.enter()
+		   	.append("g")
 		   	.append("rect")
 		   	.attr("x", 0)
 		   	.attr("y", function(d) { return h - d.properties.happinessIndex * 20;})
 		   	.attr("width", 50)
 		   	.attr("height", function(d, i) { return d.properties.happinessIndex * 20;})
 		   	.attr("x", function(d, i) {return i * 51;})
-		   	.attr("fill", "rgba(0, 0, 255, .25)");
+		   	.attr("fill", "rgba(0, 0, 255, .50)")
+		   	.on("mouseenter", function(d, i) {
+		   		d3.select(this)
+		   			.attr("fill", "blue");
+		   		d3.select(this.parentNode)
+		   			.append("text")
+		   			.text(function(d) {return d.properties.happinessIndex;})
+		   			.attr("x", function(d) {return i * (w / statesData.features.length) + 23;})
+		   			.attr("y", function(d) {return (h - (d.properties.happinessIndex) * 20) + 15;})
+		   			.attr("font-family", "sans-serif")
+		   			.attr("font-size", "14px")
+		   			.attr("fill", "white")
+		   			.attr("font-weight", "bold");
+			})
+			.on("mouseout", function(d) {
+				d3.select(this)
+					.attr("fill", "rgba(0, 0, 255, .25)");
+					d3.select(this.parentNode)
+					.selectAll("text")
+					.remove("text");
+			});
+			// function mouseLeave(){
+   // 				svg.
+   // 			};
 
-		svg.selectAll("text")
-		   	.data(statesData.features)
-		   	.enter()
-		   	.append("text")
-	   	    .text(function(d) {return d.properties.happinessIndex;})
-		   	.attr("x", function(d, i) {return i * (w / statesData.features.length) + 23;})
-   			.attr("y", function(d) {return (h - (d.properties.happinessIndex) * 20) + 15;})
-   			.attr("font-family", "sans-serif")
-   			.attr("font-size", "14px")
-   			.attr("fill", "white")
-   			.attr("font-weight", "bold");
+   			// function mouseEnter(){
+   			// 	svg.selectAll("text")
+				  //  	.data(statesData.features)
+				  //  	.enter()
+				  //  	.append("text")
+			   // 	    .text(function(d) {return d.properties.happinessIndex;})
+				  //  	.attr("x", function(d, i) {return i * (w / statesData.features.length) + 23;})
+		   	// 		.attr("y", function(d) {return (h - (d.properties.happinessIndex) * 20) + 15;})
+		   	// 		.attr("font-family", "sans-serif")
+		   	// 		.attr("font-size", "14px")
+		   	// 		.attr("fill", "white")
+		   	// 		.attr("font-weight", "bold")
+
+   			// };
+
+   			
 
         </script>
     </body>
 </html> 
 
-<!-- http://alignedleft.com/tutorials/d3/an-svg-primer -->
 
-
-<!-- 		 .attr("fill", function(d) {
-   			 return "rgb(0, 0, " + (d.properties.happinessIndex * 20) + ")";
-			}); -->
+			
+			   
